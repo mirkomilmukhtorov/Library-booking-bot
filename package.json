@@ -1,0 +1,10 @@
+{
+  "name": "library-booking",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "node-schedule": "^2.1.1"
+  }
+}
