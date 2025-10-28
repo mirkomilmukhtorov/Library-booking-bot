@@ -1,24 +1,25 @@
-import schedule from 'node-schedule';
-import { exec } from 'child_process';
+import schedule from "node-schedule";
+import { exec } from "child_process";
 
-const rule = new schedule.RecurrenceRule();
-rule.tz = 'Asia/Kuala_Lumpur';
-rule.hour = 0;    // 00:00 MYT
-rule.minute = 0;
+const timezone = "Asia/Kuala_Lumpur";
+console.log("🕛 Scheduler started — waiting for midnight (MYT) to auto-book...");
 
-console.log('🕛 Scheduler started — waiting for midnight (MYT) to auto-book...');
+// Schedule the booking task at 00:00 MYT every day
+schedule.scheduleJob({ hour: 0, minute: 0, tz: timezone }, () => {
+  console.log("🌙 It's midnight MYT — running bookRoomCore.js...");
 
-schedule.scheduleJob(rule, () => {
-  const now = new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur' });
-  console.log(`⏰ Triggered booking at ${now}`);
-
-  exec('node bookRoomCore.js', (error, stdout, stderr) => {
+  exec("node bookRoomCore.js", (error, stdout, stderr) => {
     if (error) {
-      console.error(`❌ Booking process failed: ${error.message}`);
+      console.error(`❌ Error running bookRoomCore.js: ${error.message}`);
       return;
     }
+    if (stderr) console.error(`⚠️ STDERR: ${stderr}`);
     console.log(stdout);
-    if (stderr) console.error(stderr);
-    console.log('✅ Booking job completed.\n');
   });
 });
+
+// --- Optional: hourly heartbeat log ---
+setInterval(() => {
+  const now = new Date().toLocaleString("en-MY", { timeZone: "Asia/Kuala_Lumpur" });
+  console.log(`🕒 Still alive at ${now}`);
+}, 1000 * 60 * 60); // every hour

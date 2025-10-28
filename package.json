@@ -4,15 +4,16 @@
   "type": "module",
   "main": "autoBook.js",
   "scripts": {
-    "start": "node autoBook.js",
+    "start": "node server.js & node autoBook.js",
     "telegram": "node telegramBot.js",
     "book": "node bookRoomCore.js",
     "save-state": "node saveState.js"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
+    "express": "^5.1.0",
     "node-schedule": "^2.1.1",
-    "playwright": "^1.48.2",
-    "node-telegram-bot-api": "^0.66.0"
+    "node-telegram-bot-api": "^0.66.0",
+    "playwright": "^1.48.2"
   }
 }
