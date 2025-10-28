@@ -3,8 +3,13 @@ const app = express();
 
 app.get("/", (req, res) => {
   const now = new Date().toLocaleString("en-MY", { timeZone: "Asia/Kuala_Lumpur" });
-  res.send(`✅ Library Booking Bot alive at ${now}`);
+  res.status(200).send(`✅ Library Booking Bot alive at ${now}`);
+});
+
+// super-fast response for uptime checks
+app.get("/ping", (req, res) => {
+  res.status(200).send("OK");
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🌐 Keep-alive server running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => console.log(`🌐 Keep-alive server running on port ${PORT}`));
