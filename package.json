@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node autoBook.js",
     "telegram": "node telegramBot.js",
-    "book": "node bookRoomCore.js"
+    "book": "node bookRoomCore.js",
+    "save-state": "node saveState.js"
   },
   "dependencies": {
     "dotenv": "^17.2.3",

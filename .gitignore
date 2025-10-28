@@ -5,3 +5,9 @@ screenshots/
 logs.txt
 booking_confirmation.png
 booking_error.png
+
+# Replit
+.replit
+.config/
+.upm/
+replit.nix

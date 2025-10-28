@@ -59,6 +59,7 @@ if (!fs.existsSync(SCREENSHOT_DIR)) {
 
   // --- Launch browser ---
   const browser = await chromium.launch({ headless: true });
+
   const context = await browser.newContext({ storageState: STORAGE_FILE });
   const page = await context.newPage();
 
