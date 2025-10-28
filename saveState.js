@@ -1,3 +1,6 @@
+process.env.PLAYWRIGHT_BROWSERS_PATH = "0";
+process.env.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+
 import { chromium } from 'playwright';
 import dotenv from 'dotenv';
 dotenv.config();

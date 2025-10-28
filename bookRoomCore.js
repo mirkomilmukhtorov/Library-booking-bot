@@ -1,3 +1,6 @@
+process.env.PLAYWRIGHT_BROWSERS_PATH = "0";
+process.env.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+
 import { chromium } from "playwright";
 import dotenv from "dotenv";
 import fs from "fs";
@@ -55,7 +58,7 @@ if (!fs.existsSync(SCREENSHOT_DIR)) {
   console.log(`🗓️ Booking planned for ${targetDay}, ${dateLabel} at ${TIME}`);
 
   // --- Launch browser ---
-  const browser = await chromium.launch({ headless: false, slowMo: 50 });
+  const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ storageState: STORAGE_FILE });
   const page = await context.newPage();
 
