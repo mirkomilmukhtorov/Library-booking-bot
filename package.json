@@ -1,10 +1,17 @@
 {
-  "name": "library-booking",
+  "name": "library-booking-bot",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
-  "license": "ISC",
+  "main": "autoBook.js",
+  "scripts": {
+    "start": "node autoBook.js",
+    "telegram": "node telegramBot.js",
+    "book": "node bookRoomCore.js"
+  },
   "dependencies": {
-    "node-schedule": "^2.1.1"
+    "dotenv": "^17.2.3",
+    "node-schedule": "^2.1.1",
+    "playwright": "^1.48.2",
+    "node-telegram-bot-api": "^0.66.0"
   }
 }

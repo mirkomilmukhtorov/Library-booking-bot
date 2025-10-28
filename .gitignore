@@ -1,5 +1,7 @@
 node_modules/
 .env
 authState.json
+screenshots/
+logs.txt
 booking_confirmation.png
 booking_error.png
