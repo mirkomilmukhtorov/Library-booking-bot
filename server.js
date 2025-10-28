@@ -6,10 +6,12 @@ app.get("/", (req, res) => {
   res.status(200).send(`✅ Library Booking Bot alive at ${now}`);
 });
 
-// super-fast response for uptime checks
 app.get("/ping", (req, res) => {
   res.status(200).send("OK");
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, "0.0.0.0", () => console.log(`🌐 Keep-alive server running on port ${PORT}`));
+const PORT = process.env.PORT || 10000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🌐 Keep-alive server running on port ${PORT}`);
+});
