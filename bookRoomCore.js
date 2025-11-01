@@ -51,12 +51,11 @@ console.log(`🗓️ Booking planned for ${dayName}, ${dateStr} at ${timeSlot}`)
 
 // === MAIN FUNCTION ===
 (async () => {
+  let browser;
   const confirmPath = path.join(SCREENSHOT_DIR, `booking_${dateStr}.png`);
   const errorPath = path.join(SCREENSHOT_DIR, `error_${dateStr}.png`);
 
   try {
-    let browser;
-
     // Use saved session if available
     if (fs.existsSync(STORAGE_FILE)) {
       browser = await chromium.launch({ headless: true });
@@ -90,7 +89,11 @@ console.log(`🗓️ Booking planned for ${dayName}, ${dateStr} at ${timeSlot}`)
       console.log(`📸 Error screenshot saved: ${errorPath}`);
     } catch {}
   } finally {
-    if (browser) await browser.close();
+    if (browser) {
+      try {
+        await browser.close();
+      } catch {}
+    }
     console.log("🏁 Booking process finished.");
   }
 
