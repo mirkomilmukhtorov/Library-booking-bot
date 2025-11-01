@@ -9,7 +9,8 @@ const STORAGE_FILE = 'authState.json';
 
 (async () => {
   console.log('🔑 Opening XMUM login page...');
-  const browser = await chromium.launch({ headless: true, slowMo: 50 });
+  // const browser = await chromium.launch({ headless: true, slowMo: 50 });
+  const browser = await chromium.launch({ headless: false, slowMo: 50 });
   const context = await browser.newContext();
   const page = await context.newPage();
 
